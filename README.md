@@ -2,7 +2,7 @@
 
 ## Bluetooth devices list
 
-[widget_bt_tab](widget_bt_tab)
+[widget_bt_tab](widget_bt_tab.yaml)
 
 ![image](https://user-images.githubusercontent.com/5871213/144725036-8783185e-2d4e-4d97-907c-a4bcfe2111f0.png)
 
