@@ -9,7 +9,6 @@ props:
       required: false
       type: TEXT
     - context: item
-      default: MiSmartPowerPlug2WiFiandBluetoothGateway3611855961587413Cwithtoken_ConnectedBTGatewayDevices
       description: An item to control
       label: BT Item list
       name: item
