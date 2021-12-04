@@ -1,0 +1,64 @@
+uid: widget_bt_tab
+tags: []
+props:
+  parameters:
+    - description: Header
+      label: Header Text
+      name: headerText
+      default: BT devices in range
+      required: false
+      type: TEXT
+    - context: item
+      default: MiSmartPowerPlug2WiFiandBluetoothGateway3611855961587413Cwithtoken_ConnectedBTGatewayDevices
+      description: An item to control
+      label: BT Item list
+      name: item
+      required: true
+      type: TEXT
+  parameterGroups: []
+timestamp: Dec 4, 2021, 7:38:51 PM
+component: f7-card
+config:
+  title: '=props.headerText'
+slots:
+  default:
+    - component: f7-row
+      slots:
+         default:
+          - component: Label
+            config:
+              visible: true
+              text: "Device"
+              style:
+                font-size: 10px
+                margin-left: 40px
+              class:
+              - padding-left
+          - component: Label
+            config:
+              visible: true
+              text: "Signal Strength"
+              width: 132px
+              style:
+                font-size: 10px 
+              class:
+              - padding-right
+    - component: oh-list
+      slots:
+        default:
+          - component: oh-repeater
+            config:
+              for: btitems
+              sourceType: array
+              fragment: true
+              in: =items[props.item].state.slice(1,-1).split(",")
+            slots:
+              default:
+                - component: oh-list-item
+                  config:
+                    badge: = loop.btitems.split(":")[1].slice(1,-1)
+                    badgeColor: '=(loop.btitems.split(":")[1].slice(1,-1)  > -50) ? "green" : (loop.btitems.split(":")[1].slice(1,-1) <-80) ? "red" :  "yellow"'
+                    icon: bluetooth                    
+                    style:
+                      --f7-list-item-after-font-weight: bold
+                    title: = loop.btitems.split(":")[0].slice(1,-1)                  
